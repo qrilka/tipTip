@@ -177,18 +177,19 @@
                     tiptip_arrow.css({"margin-left": arrow_left+"px", "margin-top": arrow_top+"px"});
                     tiptip_holder.css({"margin-left": marg_left+"px", "margin-top": marg_top+"px"}).attr("class","tip"+t_class);
 
-            		if (timeout){ clearTimeout(timeout); }
-					timeout = setTimeout(function(){ tiptip_holder.stop(true,true).fadeIn(opts.fadeIn); }, opts.delay);
-				}
+                    if (timeout){ clearTimeout(timeout); }
+                    timeout = setTimeout(function(){ tiptip_holder.stop(true,true).fadeIn(opts.fadeIn); }, opts.delay);
+                }
 
-				function deactive_tiptip(){
-					opts.exit.call(this);
-					if (timeout){ clearTimeout(timeout); }
-					tiptip_holder.fadeOut(opts.fadeOut);
-				}
-			}
-		});
-	};
+                function deactive_tiptip(){
+                    org_elem.removeData('tipTipDeactivate');
+                    opts.exit.call(this);
+                    if (timeout){ clearTimeout(timeout); }
+                    tiptip_holder.fadeOut(opts.fadeOut);
+                }
+            }
+        });
+    };
     $.fn.removeTipTip = function() {
         return this.each(function(){
             var deactivate = $(this).data('tipTipDeactivate');
